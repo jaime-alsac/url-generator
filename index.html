@@ -31,7 +31,7 @@
                     for (const askarray of ['', 'low', 'standard', 'high']) {
                         const li = document.createElement('li');
 
-                        let urlParameters = baseUrl.value + "?";
+                        let urlParameters = baseUrl.value.trim() + "?";
 
                         if (frequency !== '') {
                             urlParameters += `frequency_selected=${frequency}&`;
