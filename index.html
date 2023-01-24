@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <label for="baseUrl">Base Url: <input id="baseUrl" type="text"></label>
+    <button id="generate">Generate</button> <br>
+    <div id="urls"></div>
+
+    <script>
+        const baseUrl = document.getElementById('baseUrl');
+        const generate = document.getElementById('generate');
+
+       
+        generate.addEventListener('click', () => {
+            const code = document.getElementById('urls');
+            code.innerHTML = "";
+            let ol = document.createElement('ol');
+
+            let i = 0
+            for (const frequency of ['', 0, 1]) {
+                for (const dedication of ['', 0, 1, 2]) {
+                    for (const askarray of ['', 'low', 'standard', 'high']) {
+                        const li = document.createElement('li');
+
+                        let urlParameters = baseUrl.value + "?";
+
+                        if (frequency !== '') {
+                            urlParameters += `frequency_selected=${frequency}&`;
+                        }
+                        if (dedication !== '') {
+                            urlParameters += `dedication=${dedication}&`;
+                        }
+                        if (askarray !== '') {
+                            urlParameters += `ask_array=${askarray}&`;
+                        }
+
+                        li.innerText = urlParameters.slice(0, -1);
+                        ol.appendChild(li);
+                    }
+                }
+            }
+
+            code.appendChild(ol);
+        });
+    </script>
+</body>
+
+</html>
